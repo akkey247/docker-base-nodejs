@@ -1,0 +1,4 @@
+#!/bin/bash
+
+rm -rf $WORK_DIR/* $WORK_DIR/.*
+mysql --host=db --port=3306 --user=my_db_user --password=my_db_password --database=my_database --execute="SHOW TABLES" -s | xargs -I "@@" mysql --host=db --port=3306 --user=my_db_user --password=my_db_password --database=my_database --execute="DROP TABLE @@"
